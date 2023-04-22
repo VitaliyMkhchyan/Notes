@@ -4,9 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity
-public class Note {
-    @PrimaryKey
+import java.io.Serializable;
+
+@Entity(tableName = "notes")
+public class Note implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     @ColumnInfo(name = "title")
@@ -24,6 +27,8 @@ public class Note {
         this.description = description;
         this.date_of_creation = date_of_creation;
     }
+
+    public Note() {}
 
     public int getId() {
         return id;

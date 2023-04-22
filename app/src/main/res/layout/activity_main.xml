@@ -11,6 +11,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/btn_press"
-            android:contentDescription="@string/app_name"
+            android:contentDescription="@string/hint_title"
             android:src="@drawable/ic_create_note"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

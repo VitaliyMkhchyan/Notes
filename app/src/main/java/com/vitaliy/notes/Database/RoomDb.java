@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase;
 
 import com.vitaliy.notes.Models.Note;
 
-@Database(entities = Note.class, version = 1)
+@Database(entities = Note.class, version = 1, exportSchema = false)
 public abstract class RoomDb extends RoomDatabase {
-    public NoteDAO noteDAO;
+    public abstract NoteDAO noteDAO();
 }
