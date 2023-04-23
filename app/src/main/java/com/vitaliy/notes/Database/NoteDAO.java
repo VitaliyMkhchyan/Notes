@@ -21,8 +21,8 @@ public interface NoteDAO {
     List<Note> getAll();
 
     // Обновление записей
-    @Query("UPDATE notes SET title = :title, description = :description, date_of_creation = :date_of_creation")
-    void update(String title, String description, String date_of_creation);
+    @Query("UPDATE notes SET title = :title, description = :description, date_of_creation = :date_of_creation where ID = :id")
+    void update(int id, String title, String description, String date_of_creation);
 
     // Удаление
     @Delete

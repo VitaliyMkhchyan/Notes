@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.vitaliy.notes.Adapters.NoteAdapter;
 import com.vitaliy.notes.Database.RoomDb;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // Нажатие на элемент RecyclerView
-    SetOnClickItem setOnClickItem = new SetOnClickItem() {
+    final SetOnClickItem setOnClickItem = new SetOnClickItem() {
         @Override
         public void onClick(Note note) {
             Intent intent = new Intent(MainActivity.this, NoteActivity.class);
@@ -63,19 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Получение результата из NoteActivity (Note)
     @SuppressLint("NotifyDataSetChanged")
-    ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+    final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getData() != null) {
                     Bundle bundle = result.getData().getExtras();
                     Note new_note = (Note) bundle.get("notes");
                     int status = bundle.getInt("status");
-                    
+
                     // Обновляем или создаем ячейку в базе данных
                     switch (status) {
-                        case 0: roomDatabase.noteDAO().update(new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation());
-                        case 1: roomDatabase.noteDAO().insert(new_note);
-                        case 2: roomDatabase.noteDAO().delete(new_note);
+                        case 0: roomDatabase.noteDAO().update(new_note.getId(), new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation()); break;
+                        case 1: roomDatabase.noteDAO().insert(new_note); break;
+                        case 2: roomDatabase.noteDAO().delete(new_note); break;
                     }
 
                     noteList.clear();
