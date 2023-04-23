@@ -32,6 +32,7 @@ public class NoteActivity extends AppCompatActivity {
 
         ImageButton btnSave = findViewById(R.id.btn_save);
         ImageButton btnDelete = findViewById(R.id.btn_delete);
+        ImageButton btnBack = findViewById(R.id.btn_back);
 
         editTitle = findViewById(R.id.editTitle);
         editDescription = findViewById(R.id.editDescription);
@@ -51,6 +52,7 @@ public class NoteActivity extends AppCompatActivity {
             btnDelete.setVisibility(View.VISIBLE);
         } catch (Exception e) {e.printStackTrace();}
 
+        // Сохранение заметки
         btnSave.setOnClickListener(view -> {
             String title = editTitle.getText().toString();
             String description = editDescription.getText().toString();
@@ -69,7 +71,7 @@ public class NoteActivity extends AppCompatActivity {
             }
         });
 
-        // Удаление замеки
+        // Удаление заметки
         btnDelete.setOnClickListener(view -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Удаление заметки");
@@ -87,6 +89,9 @@ public class NoteActivity extends AppCompatActivity {
             builder.setNegativeButton("Отмена", (dialogInterface, i) -> {});
             builder.create().show();
         });
+
+        // Назад в MainActivity
+        btnBack.setOnClickListener(view -> finish());
     }
     /** Получение даты и времени
      * @return 20.10.2023 15:33:33 */
