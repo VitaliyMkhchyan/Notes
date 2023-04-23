@@ -2,7 +2,6 @@ package com.vitaliy.notes;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.vitaliy.notes.Database.RoomDb;
 import com.vitaliy.notes.Models.Note;
 
 import java.text.DateFormat;
