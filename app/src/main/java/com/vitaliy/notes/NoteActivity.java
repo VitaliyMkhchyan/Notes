@@ -79,9 +79,7 @@ public class NoteActivity extends AppCompatActivity {
 
             builder.setPositiveButton("Удалить", (dialogInterface, i) -> {
                 if (isOldNote) {
-                    RoomDb roomDb = Room.databaseBuilder(this, RoomDb.class, "notes").allowMainThreadQueries().build();
-                    roomDb.noteDAO().delete(note);
-                    goHome(note, status);
+                    goHome(note, 2);
                 } else {
                     Toast.makeText(this, "Это новая заметка!", Toast.LENGTH_SHORT).show();
                 }

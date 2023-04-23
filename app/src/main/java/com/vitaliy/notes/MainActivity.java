@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
                     int status = bundle.getInt("status");
                     
                     // Обновляем или создаем ячейку в базе данных
-                    if (status == 0) {
-                        roomDatabase.noteDAO().update(new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation());
-                    } else {
-                        roomDatabase.noteDAO().insert(new_note);
+                    switch (status) {
+                        case 0: roomDatabase.noteDAO().update(new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation());
+                        case 1: roomDatabase.noteDAO().insert(new_note);
+                        case 2: roomDatabase.noteDAO().delete(new_note);
                     }
 
                     noteList.clear();
