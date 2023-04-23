@@ -46,7 +46,7 @@ public class NoteActivity extends AppCompatActivity {
         try {
             note = (Note) getIntent().getSerializableExtra("old_note");
 
-            editTitle.setText(note.getTitle()); // Exp
+            editTitle.setText(note.getTitle());
             editDescription.setText(note.getDescription());
             isOldNote = true;
             btnDelete.setVisibility(View.VISIBLE);
@@ -58,7 +58,7 @@ public class NoteActivity extends AppCompatActivity {
             String description = editDescription.getText().toString();
 
             if (title.equals("") && description.equals("")) {
-                Toast.makeText(this, "Нельзя сохранить пустую заметку", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Нельзя сохранить пустую заметку!", Toast.LENGTH_SHORT).show();
             } else {
                 if (!isOldNote) {
                     note = new Note();
