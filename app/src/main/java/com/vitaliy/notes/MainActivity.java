@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.vitaliy.notes.Adapters.NoteAdapter;
 import com.vitaliy.notes.Database.RoomDb;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Нажатие на элемент RecyclerView
+    /** Нажатие на элемент RecyclerView */
     final SetOnClickItem setOnClickItem = new SetOnClickItem() {
         @Override
         public void onClick(Note note) {
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    // Получение результата из NoteActivity (Note)
+    /** Получение результата из NoteActivity (Note) */
     @SuppressLint("NotifyDataSetChanged")
     final ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),

@@ -22,8 +22,8 @@ public class NoteActivity extends AppCompatActivity {
 
     private EditText editTitle, editDescription;
     private int status;
-    public Note note;
-    public boolean isOldNote = false;
+    private Note note;
+    private boolean isOldNote = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
