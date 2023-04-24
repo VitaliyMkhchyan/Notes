@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private List<Note> noteList;
     private RoomDb roomDatabase;
     private NoteAdapter noteAdapter;
+    private RecyclerView recyclerView;
+    private ImageButton btnCreateNote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        ImageButton btnCreateNote = findViewById(R.id.btn_create_note);
+        InitialObjects();
 
-        roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();
-        noteList = roomDatabase.noteDAO().getAll();
         noteAdapter = new NoteAdapter(noteList, setOnClickItem, MainActivity.this);
-
         recyclerView.setAdapter(noteAdapter);
 
         // Создание заметки
@@ -48,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("status", 1); // Status = 1; если это новая заметка
             activityResultLauncher.launch(intent);
         });
+    }
+
+    /** Инициализация используемых объектов */
+    private void InitialObjects() {
+        recyclerView = findViewById(R.id.recyclerView);
+        btnCreateNote = findViewById(R.id.btn_create_note);
+
+        roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();
+        noteList = roomDatabase.noteDAO().getAll();
     }
 
     /** Нажатие на элемент RecyclerView */

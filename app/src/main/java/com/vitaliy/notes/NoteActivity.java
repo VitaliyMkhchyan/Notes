@@ -21,6 +21,7 @@ import java.util.Locale;
 public class NoteActivity extends AppCompatActivity {
 
     private EditText editTitle, editDescription;
+    private ImageButton btnSave, btnDelete, btnBack;
     private int status;
     private Note note;
     private boolean isOldNote = false;
@@ -30,14 +31,7 @@ public class NoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        ImageButton btnSave = findViewById(R.id.btn_save);
-        ImageButton btnDelete = findViewById(R.id.btn_delete);
-        ImageButton btnBack = findViewById(R.id.btn_back);
-
-        editTitle = findViewById(R.id.editTitle);
-        editDescription = findViewById(R.id.editDescription);
-
-        note = new Note();
+        InitialObjects();
 
         status = (int) getIntent().getSerializableExtra("status");
 
@@ -93,14 +87,30 @@ public class NoteActivity extends AppCompatActivity {
         // Назад в MainActivity
         btnBack.setOnClickListener(view -> finish());
     }
+
+    /** Инициализация используемых объектов */
+    private void InitialObjects() {
+        btnSave = findViewById(R.id.btn_save);
+        btnDelete = findViewById(R.id.btn_delete);
+        btnBack = findViewById(R.id.btn_back);
+
+        editTitle = findViewById(R.id.editTitle);
+        editDescription = findViewById(R.id.editDescription);
+
+        note = new Note();
+    }
+
     /** Получение даты и времени
      * @return 20.10.2023 15:33:33 */
     private String currentDateTime() {
+        // Текущее время
         Date currentDate = new Date();
 
+        // Форматирование времени как "день.месяц.год"
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
         String date = dateFormat.format(currentDate);
 
+        // Форматирование времени как "часы:минуты:секунды"
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
         String time = timeFormat.format(currentDate);
 

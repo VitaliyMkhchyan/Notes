@@ -41,6 +41,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         holder.description.setText(note.getDescription());
         holder.date_of_creation.setText(note.getDate_of_creation());
 
+        // Обработка нажатия на элемент RecyclerView
         holder.itemView.setOnClickListener(view -> setOnClickItem.onClick(note));
     }
 
@@ -50,7 +51,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
     }
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
-
         // Объекты модели
         final TextView title, description, date_of_creation;
 
