@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     /** Инициализация используемых объектов */
     private void InitialObjects() {
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recycler_view);
         btnCreateNote = findViewById(R.id.btn_create_note);
 
         roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();

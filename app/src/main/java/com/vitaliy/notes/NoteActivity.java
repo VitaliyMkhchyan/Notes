@@ -94,8 +94,8 @@ public class NoteActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.btn_delete);
         btnBack = findViewById(R.id.btn_back);
 
-        editTitle = findViewById(R.id.editTitle);
-        editDescription = findViewById(R.id.editDescription);
+        editTitle = findViewById(R.id.edit_title);
+        editDescription = findViewById(R.id.edit_description);
 
         note = new Note();
     }

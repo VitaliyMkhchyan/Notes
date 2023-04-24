@@ -67,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/editTitle"
+        android:id="@+id/edit_title"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_margin="10dp"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <EditText
-        android:id="@+id/editDescription"
+        android:id="@+id/edit_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -102,6 +102,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitle"
+        app:layout_constraintTop_toBottomOf="@+id/edit_title"
         tools:ignore="RtlSymmetry" />
 </androidx.constraintlayout.widget.ConstraintLayout>
