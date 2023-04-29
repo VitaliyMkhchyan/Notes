@@ -10,13 +10,21 @@ import androidx.room.Room;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vitaliy.notes.Adapters.NoteAdapter;
 import com.vitaliy.notes.Database.RoomDb;
 import com.vitaliy.notes.Interfaces.SetOnClickItem;
 import com.vitaliy.notes.Models.Note;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private RoomDb roomDatabase;
     private NoteAdapter noteAdapter;
     private RecyclerView recyclerView;
-    private ImageButton btnCreateNote;
+    private ImageButton btnCreateNote, btnSearchNote;
+    private EditText search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +55,47 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("status", 1); // Status = 1; если это новая заметка
             activityResultLauncher.launch(intent);
         });
+
+        // При нажатии на кнопку search скрывать или показывать searchView
+        btnSearchNote.setOnClickListener(view -> {
+            if (search.getVisibility() == View.GONE) {search.setVisibility(View.VISIBLE);}
+            else {search.setVisibility(View.GONE);}
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence newText, int start, int before, int count) {
+                FilterText(newText.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    /** Поиск заметки */
+    private void FilterText(String newText) {
+        List<Note> filteredList = new ArrayList<>();
+        for (Note note : noteList) {
+            if (note.getTitle().toLowerCase().contains(newText.toLowerCase())) {
+                filteredList.add(note);
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No note found", Toast.LENGTH_SHORT).show();
+        } else {noteAdapter.setFilteredList(filteredList);}
     }
 
     /** Инициализация используемых объектов */
     private void InitialObjects() {
         recyclerView = findViewById(R.id.recycler_view);
         btnCreateNote = findViewById(R.id.btn_create_note);
+        btnSearchNote = findViewById(R.id.btn_search_note);
+        search = findViewById(R.id.search);
 
         roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();
         noteList = roomDatabase.noteDAO().getAll();

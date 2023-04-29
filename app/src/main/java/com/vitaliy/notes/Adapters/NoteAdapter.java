@@ -1,5 +1,6 @@
 package com.vitaliy.notes.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
 
-    private final List<Note> noteList;
+    private List<Note> noteList;
     private final SetOnClickItem setOnClickItem;
     private final LayoutInflater inflater;
 
@@ -25,6 +26,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         this.noteList = noteList;
         this.setOnClickItem = setOnClickItem;
         inflater = LayoutInflater.from(context);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setFilteredList(List<Note> filteredList) {
+        this.noteList = filteredList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -56,7 +63,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.title);
+            title = itemView.findViewById(R.id.title_);
             description = itemView.findViewById(R.id.description);
             date_of_creation = itemView.findViewById(R.id.date);
         }
