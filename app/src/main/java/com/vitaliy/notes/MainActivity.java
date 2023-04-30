@@ -4,6 +4,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -15,8 +17,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vitaliy.notes.Adapters.NoteAdapter;
@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private RoomDb roomDatabase;
     private NoteAdapter noteAdapter;
     private RecyclerView recyclerView;
-    private ImageButton btnCreateNote, btnSearchNote;
+    private ImageButton btnCreateNote, btnSearchNote, btnLayoutManager;
     private EditText search;
+    private static boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {}
         });
+
+        btnLayoutManager.setOnClickListener(view -> {
+            if (flag) {
+                btnLayoutManager.setImageResource(R.drawable.ic_linear_layout);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                flag = false;
+            } else {
+                btnLayoutManager.setImageResource(R.drawable.ic_grid_layout);
+                recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+                flag = true;
+            }
+        });
     }
 
     /** Поиск заметки */
@@ -95,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_view);
         btnCreateNote = findViewById(R.id.btn_create_note);
         btnSearchNote = findViewById(R.id.btn_search_note);
+        btnLayoutManager = findViewById(R.id.btn_layout_manager);
         search = findViewById(R.id.search);
 
         roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();

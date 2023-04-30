@@ -26,6 +26,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
+            android:id="@+id/btn_layout_manager"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/btn_press"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_create_note"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_linear_layout" />
+
+        <ImageButton
             android:id="@+id/btn_create_note"
             android:layout_width="48dp"
             android:layout_height="48dp"
