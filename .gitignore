@@ -20,3 +20,4 @@ gradlew
 /gradle
 gradlew.bat
 local.properties
+app/release
