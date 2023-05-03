@@ -2,6 +2,7 @@ package com.vitaliy.notes.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.vitaliy.notes.Interfaces.SetOnClickItem;
@@ -50,6 +52,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         holder.title.setText(note.getTitle());
         holder.description.setText(note.getDescription());
         holder.date_of_creation.setText(note.getDate_of_creation());
+        holder.box.setCardBackgroundColor(Color.parseColor(note.getColor()));
 
         holder.btn_star_note.setOnClickListener(view -> {
             if (flug) {
@@ -74,12 +77,14 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
         // Объекты модели
         final TextView title, description, date_of_creation;
         final ImageButton btn_star_note;
+        final CardView box;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_);
             description = itemView.findViewById(R.id.description);
             date_of_creation = itemView.findViewById(R.id.date);
+            box = itemView.findViewById(R.id.box);
             btn_star_note = itemView.findViewById(R.id.btn_star_note);
         }
     }

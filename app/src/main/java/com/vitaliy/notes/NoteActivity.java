@@ -21,10 +21,11 @@ import java.util.Locale;
 public class NoteActivity extends AppCompatActivity {
 
     private EditText editTitle, editDescription;
-    private ImageButton btnSave, btnDelete, btnBack;
+    private ImageButton btnSave, btnDelete, btnBack, btnGreen, btnOrange, btnTeal, btnAzure, btnGray, btnPea;
     private int status;
     private Note note;
     private boolean isOldNote = false;
+    private String isColor = "#FFFFFF";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class NoteActivity extends AppCompatActivity {
                 note.setTitle(title);
                 note.setDescription(description);
                 note.setDate_of_creation(currentDateTime());
+                note.setColor(isColor);
                 goHome(note, status);
             }
         });
@@ -86,6 +88,14 @@ public class NoteActivity extends AppCompatActivity {
 
         // Назад в MainActivity
         btnBack.setOnClickListener(view -> finish());
+
+        // Установка цвета CardView
+        btnGreen.setOnClickListener(view -> isColor = "#218A21");
+        btnOrange.setOnClickListener(view -> isColor = "#F8931D");
+        btnTeal.setOnClickListener(view -> isColor = "#017E80");
+        btnAzure.setOnClickListener(view -> isColor = "#017EFF");
+        btnGray.setOnClickListener(view -> isColor = "#7F7F7F");
+        btnPea.setOnClickListener(view -> isColor = "#8DC73F");
     }
 
     /** Инициализация используемых объектов */
@@ -93,6 +103,14 @@ public class NoteActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btn_save);
         btnDelete = findViewById(R.id.btn_delete);
         btnBack = findViewById(R.id.btn_back);
+
+        // Colors CardView
+        btnGreen = findViewById(R.id.green);
+        btnOrange = findViewById(R.id.orange);
+        btnTeal = findViewById(R.id.teal);
+        btnGray = findViewById(R.id.gray);
+        btnAzure = findViewById(R.id.azure);
+        btnPea = findViewById(R.id.pea);
 
         editTitle = findViewById(R.id.edit_title);
         editDescription = findViewById(R.id.edit_description);

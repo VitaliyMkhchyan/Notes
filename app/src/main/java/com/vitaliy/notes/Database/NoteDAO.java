@@ -1,6 +1,9 @@
 package com.vitaliy.notes.Database;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
+
+import android.graphics.Color;
+
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,8 +24,8 @@ public interface NoteDAO {
     List<Note> getAll();
 
     // Обновление записей
-    @Query("UPDATE notes SET title = :title, description = :description, date_of_creation = :date_of_creation where ID = :id")
-    void update(int id, String title, String description, String date_of_creation);
+    @Query("UPDATE notes SET title = :title, description = :description, date_of_creation = :date_of_creation, color = :color where ID = :id")
+    void update(int id, String title, String description, String date_of_creation, String color);
 
     // Удаление
     @Delete

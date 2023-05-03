@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         btnLayoutManager = findViewById(R.id.btn_layout_manager);
         search = findViewById(R.id.search);
 
-        roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().build();
+        roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         noteList = roomDatabase.noteDAO().getAll();
     }
 
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
                     // Обновляем или создаем ячейку в базе данных
                     switch (status) {
-                        case 0: roomDatabase.noteDAO().update(new_note.getId(), new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation()); break;
+                        case 0: roomDatabase.noteDAO().update(new_note.getId(), new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation(), new_note.getColor()); break;
                         case 1: roomDatabase.noteDAO().insert(new_note); break;
                         case 2: roomDatabase.noteDAO().delete(new_note); break;
                     }

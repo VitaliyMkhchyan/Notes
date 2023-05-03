@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/a"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_activity"
@@ -98,4 +99,94 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_title"
         tools:ignore="RtlSymmetry" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/colors"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:backgroundTint="#C5C5C5"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:id="@+id/box"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/pea"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/pea"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/gray"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/pea" />
+
+            <ImageButton
+                android:id="@+id/gray"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/azure"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/gray" />
+
+            <ImageButton
+                android:id="@+id/azure"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/azure"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/teal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/azure" />
+
+            <ImageButton
+                android:id="@+id/teal"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/teal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/green"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/teal" />
+
+            <ImageButton
+                android:id="@+id/green"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/orange"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/green" />
+
+            <ImageButton
+                android:id="@+id/orange"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:contentDescription="@string/orange"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/orange" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

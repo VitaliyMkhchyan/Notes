@@ -21,11 +21,15 @@ public class Note implements Serializable {
     @ColumnInfo(name = "date_of_creation")
     public String date_of_creation;
 
-    public Note(int id, String title, String description, String date_of_creation) {
+    @ColumnInfo(name = "color")
+    public String color;
+
+    public Note(int id, String title, String description, String date_of_creation, String color) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date_of_creation = date_of_creation;
+        this.color = color;
     }
 
     public Note() {}
@@ -52,6 +56,14 @@ public class Note implements Serializable {
 
     public String getDate_of_creation() {
         return date_of_creation;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setDate_of_creation(String date_of_creation) {
