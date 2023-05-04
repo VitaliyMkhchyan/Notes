@@ -10,19 +10,19 @@ import java.io.Serializable;
 public class Note implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @ColumnInfo(name = "title")
-    public String title;
+    private String title;
 
     @ColumnInfo(name = "description")
-    public String description;
+    private String description;
 
     @ColumnInfo(name = "date_of_creation")
-    public String date_of_creation;
+    private String date_of_creation;
 
     @ColumnInfo(name = "color")
-    public String color;
+    private String color;
 
     public Note(int id, String title, String description, String date_of_creation, String color) {
         this.id = id;
