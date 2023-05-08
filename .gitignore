@@ -15,7 +15,6 @@
 local.properties
 
 /.idea
-gradle.properties
 gradlew
 gradlew.bat
 local.properties
