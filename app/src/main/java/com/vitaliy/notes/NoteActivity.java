@@ -25,7 +25,7 @@ public class NoteActivity extends AppCompatActivity {
     private int status;
     private Note note;
     private boolean isOldNote = false;
-    private String isColor = "";
+    private String isColor = "#FFFFFF";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
