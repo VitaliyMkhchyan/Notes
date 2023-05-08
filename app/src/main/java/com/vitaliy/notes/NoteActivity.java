@@ -25,7 +25,7 @@ public class NoteActivity extends AppCompatActivity {
     private int status;
     private Note note;
     private boolean isOldNote = false;
-    private String isColor = "#FFFFFF";
+    private String isColor = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class NoteActivity extends AppCompatActivity {
 
             editTitle.setText(note.getTitle());
             editDescription.setText(note.getDescription());
+            isColor = note.getColor();
             isOldNote = true;
             btnDelete.setVisibility(View.VISIBLE);
         } catch (Exception e) {e.printStackTrace();}
