@@ -17,7 +17,6 @@ local.properties
 /.idea
 gradle.properties
 gradlew
-/gradle
 gradlew.bat
 local.properties
 app/release
