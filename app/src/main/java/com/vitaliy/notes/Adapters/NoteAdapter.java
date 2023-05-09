@@ -66,6 +66,10 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder>{
 
         // Обработка нажатия на элемент RecyclerView
         holder.itemView.setOnClickListener(view -> setOnClickItem.onClick(note));
+        holder.itemView.setOnLongClickListener(v -> {
+            setOnClickItem.onLongClick(v, note);
+            return true;
+        });
     }
 
     @Override

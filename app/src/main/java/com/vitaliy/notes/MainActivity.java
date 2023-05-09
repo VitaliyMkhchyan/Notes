@@ -14,9 +14,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.vitaliy.notes.Adapters.NoteAdapter;
@@ -124,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("status", 0); // Status = 0; если это старая заметка
             activityResultLauncher.launch(intent);
         }
+
+        @Override
+        public void onLongClick(View view, Note note) {
+            showPopupMenu(view, note);
+        }
     };
 
     /** Получение результата из NoteActivity (Note) */
@@ -149,4 +157,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
     );
+
+    @SuppressLint("NotifyDataSetChanged")
+    private void showPopupMenu (View view, Note note) {
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.inflate(R.menu.menu);
+        popupMenu.show();
+        popupMenu.setOnMenuItemClickListener(item -> {
+            noteList.remove(note);
+            roomDatabase.noteDAO().delete(note);
+            noteList.clear();
+            noteList.addAll(roomDatabase.noteDAO().getAll());
+            noteAdapter.notifyDataSetChanged();
+            return true;
+        });
+    }
 }
