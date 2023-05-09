@@ -9,7 +9,7 @@
     tools:context=".NoteActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,43 +47,32 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/title_"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_note"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+        <EditText
+            android:id="@+id/edit_title"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:autofillHints="no"
+            android:background="@drawable/edit_text"
+            android:ems="10"
+            android:hint="@string/hint_title"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColorHint="@color/hint"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+            app:layout_constraintStart_toEndOf="@+id/btn_back"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <EditText
-        android:id="@+id/edit_title"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_margin="10dp"
-        android:layout_marginTop="10dp"
-        android:autofillHints="no"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:hint="@string/hint_title"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:textColorHint="@color/hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <EditText
         android:id="@+id/edit_description"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
+        android:layout_marginTop="599dp"
         android:autofillHints="no"
         android:background="@drawable/edit_text"
         android:ems="10"
@@ -97,13 +86,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_title"
+        app:layout_constraintTop_toBottomOf="@+id/titlebar"
         tools:ignore="RtlSymmetry" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/colors"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#C5C5C5"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,13 +102,15 @@
         <LinearLayout
             android:id="@+id/box"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageButton
                 android:id="@+id/pea"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/pea"
@@ -133,6 +124,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/gray"
@@ -146,6 +139,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/azure"
@@ -159,6 +154,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/teal"
@@ -172,6 +169,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/green"
@@ -185,6 +184,8 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_weight="1"
                 android:background="#C5C5C5"
                 android:contentDescription="@string/orange"

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/search" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,6 +88,6 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/titlebar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
