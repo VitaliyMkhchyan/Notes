@@ -14,8 +14,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -158,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
             }
     );
 
+    // Popup меню для удаления заметки
     @SuppressLint("NotifyDataSetChanged")
     private void showPopupMenu (View view, Note note) {
         PopupMenu popupMenu = new PopupMenu(this, view);
