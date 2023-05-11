@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             else {search.setVisibility(View.GONE);}
         });
 
+        // Фильтр
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

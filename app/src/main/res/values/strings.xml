@@ -14,4 +14,5 @@
     <string name="orange">Orange</string>
     <string name="pea">Pea</string>
     <string name="teal">Teal</string>
+    <string name="popup_remove">Remove</string>
 </resources>
