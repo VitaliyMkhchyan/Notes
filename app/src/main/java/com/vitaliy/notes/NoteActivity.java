@@ -25,7 +25,7 @@ public class NoteActivity extends AppCompatActivity {
     private int status;
     private Note note;
     private boolean isOldNote = false;
-    private String isColor = "#FFFFFF";
+    private String color = "#FFFFFF";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,7 @@ public class NoteActivity extends AppCompatActivity {
 
             editTitle.setText(note.getTitle());
             editDescription.setText(note.getDescription());
-            isColor = note.getColor();
+            color = note.getColor();
             isOldNote = true;
             btnDelete.setVisibility(View.VISIBLE);
         } catch (Exception e) {e.printStackTrace();}
@@ -63,7 +63,7 @@ public class NoteActivity extends AppCompatActivity {
                 note.setTitle(title);
                 note.setDescription(description);
                 note.setDate_of_creation(currentDateTime());
-                note.setColor(isColor);
+                note.setColor(color);
                 goHome(note, status);
             }
         });
@@ -91,12 +91,12 @@ public class NoteActivity extends AppCompatActivity {
         btnBack.setOnClickListener(view -> finish());
 
         // Установка цвета CardView
-        btnGreen.setOnClickListener(view -> isColor = "#218A21");
-        btnOrange.setOnClickListener(view -> isColor = "#F8931D");
-        btnTeal.setOnClickListener(view -> isColor = "#017E80");
-        btnAzure.setOnClickListener(view -> isColor = "#017EFF");
-        btnGray.setOnClickListener(view -> isColor = "#7F7F7F");
-        btnPea.setOnClickListener(view -> isColor = "#8DC73F");
+        btnGreen.setOnClickListener(view -> color = "#218A21");
+        btnOrange.setOnClickListener(view -> color = "#F8931D");
+        btnTeal.setOnClickListener(view -> color = "#017E80");
+        btnAzure.setOnClickListener(view -> color = "#017EFF");
+        btnGray.setOnClickListener(view -> color = "#7F7F7F");
+        btnPea.setOnClickListener(view -> color = "#8DC73F");
     }
 
     /** Инициализация используемых объектов */
