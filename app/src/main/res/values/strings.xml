@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Notes</string>
     <string name="hint_btn">btn</string>
+    <string name="btn_search">btn_search</string>
+    <string name="btn_press">btn_press</string>
+    <string name="btn_save">btn_save</string>
+    <string name="btn_delete">btn_delete</string>
     <string name="hint_title">Title</string>
     <string name="hint_desc">Description</string>
     <string name="hint_date">Date and Time</string>
