@@ -25,7 +25,7 @@ public class NoteActivity extends AppCompatActivity {
     private int status;
     private Note note;
     private boolean isOldNote = false;
-    private String color = "#FFFFFF";
+    private String color = "#DDDDDD";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,15 +38,24 @@ public class NoteActivity extends AppCompatActivity {
 
         btnDelete.setVisibility(View.GONE);
 
-        try {
-            note = (Note) getIntent().getSerializableExtra("old_note");
+//        try {
+//            editTitle.setText(note.getTitle());
+//            editDescription.setText(note.getDescription());
+//            color = note.getColor();
+//            isOldNote = true;
+//            btnDelete.setVisibility(View.VISIBLE);
+//        } catch (Exception e) {e.printStackTrace();}
 
+        note = (Note) getIntent().getSerializableExtra("old_note");
+
+        // Если есть данные (открытие старой заметки)
+        if (note != null) {
             editTitle.setText(note.getTitle());
             editDescription.setText(note.getDescription());
             color = note.getColor();
             isOldNote = true;
             btnDelete.setVisibility(View.VISIBLE);
-        } catch (Exception e) {e.printStackTrace();}
+        }
 
         // Сохранение заметки
         btnSave.setOnClickListener(view -> {
