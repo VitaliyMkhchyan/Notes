@@ -100,7 +100,8 @@
         <LinearLayout
             android:id="@+id/box"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/box">
 
             <ImageButton
                 android:id="@+id/pea"
@@ -110,7 +111,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/pea"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/gray"
@@ -125,7 +126,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/azure"
@@ -140,7 +141,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/azure"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/teal"
@@ -155,7 +156,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/teal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/green"
@@ -170,7 +171,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/green"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/orange"
@@ -185,7 +186,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_weight="1"
-                android:background="#C5C5C5"
+                android:background="@color/box"
                 android:contentDescription="@string/orange"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
