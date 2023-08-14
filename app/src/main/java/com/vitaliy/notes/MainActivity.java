@@ -11,7 +11,9 @@ import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -36,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageButton btnCreateNote, btnSearchNote, btnLayoutManager;
     private EditText search;
-    private static boolean flag = false;
+    private boolean flag;
+    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         noteAdapter = new NoteAdapter(noteList, setOnClickItem, MainActivity.this);
         recyclerView.setAdapter(noteAdapter);
+
+        flag = sp.getBoolean("layout", true);
+        changeLayoutManager(!flag);
 
         // Создание заметки
         btnCreateNote.setOnClickListener(view -> {
@@ -78,16 +84,16 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {}
         });
 
+        // Изменение LayoutManager для RecyclerView
         btnLayoutManager.setOnClickListener(view -> {
             if (flag) {
-                btnLayoutManager.setImageResource(R.drawable.ic_linear_layout);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                changeLayoutManager(true);
                 flag = false;
             } else {
-                btnLayoutManager.setImageResource(R.drawable.ic_grid_layout);
-                recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                changeLayoutManager(false);
                 flag = true;
             }
+            sp.edit().putBoolean("layout", flag).apply();
         });
     }
 
@@ -113,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         btnLayoutManager = findViewById(R.id.btn_layout_manager);
         search = findViewById(R.id.search);
 
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
         roomDatabase = Room.databaseBuilder(MainActivity.this, RoomDb.class, "notes").allowMainThreadQueries().fallbackToDestructiveMigration().build();
         noteList = roomDatabase.noteDAO().getAll();
     }
@@ -157,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             }
     );
 
-    // Popup меню для удаления заметки
+    /** Popup меню для удаления заметки */
     @SuppressLint("NotifyDataSetChanged")
     private void showPopupMenu (View view, Note note) {
         PopupMenu popupMenu = new PopupMenu(this, view);
@@ -171,5 +178,16 @@ public class MainActivity extends AppCompatActivity {
             noteAdapter.notifyDataSetChanged();
             return true;
         });
+    }
+
+    /** Изменение LayoutManager по нажатию на кнопку */
+    private void changeLayoutManager(boolean flag) {
+        if (flag) {
+            btnLayoutManager.setImageResource(R.drawable.ic_grid_layout);
+            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        } else {
+            btnLayoutManager.setImageResource(R.drawable.ic_linear_layout);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
     }
 }
