@@ -38,14 +38,6 @@ public class NoteActivity extends AppCompatActivity {
 
         btnDelete.setVisibility(View.GONE);
 
-//        try {
-//            editTitle.setText(note.getTitle());
-//            editDescription.setText(note.getDescription());
-//            color = note.getColor();
-//            isOldNote = true;
-//            btnDelete.setVisibility(View.VISIBLE);
-//        } catch (Exception e) {e.printStackTrace();}
-
         note = (Note) getIntent().getSerializableExtra("old_note");
 
         // Если есть данные (открытие старой заметки)
