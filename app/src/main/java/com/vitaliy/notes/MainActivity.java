@@ -29,6 +29,7 @@ import com.vitaliy.notes.Models.Note;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -146,15 +147,21 @@ public class MainActivity extends AppCompatActivity {
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getData() != null) {
-                    Bundle bundle = result.getData().getExtras();
-                    Note new_note = (Note) bundle.get("notes");
-                    int status = bundle.getInt("status");
 
-                    // Обновляем или создаем ячейку в базе данных
-                    switch (status) {
-                        case 0: roomDatabase.noteDAO().update(new_note.getId(), new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation(), new_note.getColor()); break;
-                        case 1: roomDatabase.noteDAO().insert(new_note); break;
-                        case 2: roomDatabase.noteDAO().delete(new_note); break;
+                    // Objects.requireNonNull: Проверка на null
+                    Note new_note = (Note) Objects.requireNonNull(result.getData().getExtras()).get("notes");
+
+
+                    if (new_note != null) {
+                        // Objects.requireNonNull: Проверка на null
+                        int status = (int) Objects.requireNonNull(result.getData().getExtras().get("status"));
+
+                        // Обновляем или создаем ячейку в базе данных
+                        switch (status) {
+                            case 0: roomDatabase.noteDAO().update(new_note.getId(), new_note.getTitle(), new_note.getDescription(), new_note.getDate_of_creation(), new_note.getColor()); break;
+                            case 1: roomDatabase.noteDAO().insert(new_note); break;
+                            case 2: roomDatabase.noteDAO().delete(new_note); break;
+                        }
                     }
 
                     noteList.clear();

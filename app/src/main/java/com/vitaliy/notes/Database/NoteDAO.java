@@ -1,9 +1,6 @@
 package com.vitaliy.notes.Database;
 
 import static androidx.room.OnConflictStrategy.REPLACE;
-
-import android.graphics.Color;
-
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;

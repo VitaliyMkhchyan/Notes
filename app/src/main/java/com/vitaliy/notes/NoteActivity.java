@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.vitaliy.notes.Models.Note;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,7 +35,8 @@ public class NoteActivity extends AppCompatActivity {
 
         InitialObjects();
 
-        status = (int) getIntent().getSerializableExtra("status");
+        Serializable serializable = getIntent().getSerializableExtra("status");
+        if (serializable != null) {status = (int) serializable;}
 
         btnDelete.setVisibility(View.GONE);
 
@@ -54,7 +56,7 @@ public class NoteActivity extends AppCompatActivity {
             String title = editTitle.getText().toString();
             String description = editDescription.getText().toString();
 
-            if (title.equals("") && description.equals("")) {
+            if (title.isEmpty() && description.isEmpty()) {
                 Toast.makeText(this, "Нельзя сохранить пустую заметку!", Toast.LENGTH_SHORT).show();
             } else {
                 if (!isOldNote) {
